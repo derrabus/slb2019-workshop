@@ -4,8 +4,105 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "e9b14fbf626e5c10b73fb10da43c3515",
+    "content-hash": "6f060a7e688bb407e6f248ef0f4fce4d",
     "packages": [
+        {
+            "name": "derrabus/ereg-shim",
+            "version": "v1.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/derrabus/php-ereg-shim.git",
+                "reference": "04520ed39971df1bb686285d2b7e8f228b59e435"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/derrabus/php-ereg-shim/zipball/04520ed39971df1bb686285d2b7e8f228b59e435",
+                "reference": "04520ed39971df1bb686285d2b7e8f228b59e435",
+                "shasum": ""
+            },
+            "require": {
+                "php": "^5.3 || ^7"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "^4.8.35 || ^5.6 || ^6"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.0-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Rabus\\EregShim\\": "src"
+                },
+                "files": [
+                    "src/bootstrap.php"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Alexander M. Turek",
+                    "email": "me@derrabus.de"
+                }
+            ],
+            "description": "Replacement for the ereg legacy php extension.",
+            "time": "2017-12-31T15:39:40+00:00"
+        },
+        {
+            "name": "shardj/zf1-future",
+            "version": "1.14.4",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/Shardj/zf1-future.git",
+                "reference": "1d67d306f22a9b45a1d377c4c419c03456dd57a0"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/Shardj/zf1-future/zipball/1d67d306f22a9b45a1d377c4c419c03456dd57a0",
+                "reference": "1d67d306f22a9b45a1d377c4c419c03456dd57a0",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.2.11"
+            },
+            "replace": {
+                "zendframework/zendframework1": "1.*"
+            },
+            "require-dev": {
+                "phpunit/dbunit": "1.3.*",
+                "phpunit/phpunit": "3.7.*"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.12.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-0": {
+                    "Zend_": "library/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "include-path": [
+                "library/"
+            ],
+            "license": [
+                "BSD-3-Clause"
+            ],
+            "description": "Zend Framework 1 PHP 7.2 and 7.3 compatible",
+            "homepage": "http://framework.zend.com/",
+            "keywords": [
+                "ZF1",
+                "framework"
+            ],
+            "time": "2019-09-23T11:28:21+00:00"
+        },
         {
             "name": "tecnickcom/tcpdf",
             "version": "6.3.2",
@@ -67,54 +164,6 @@
                 "qrcode"
             ],
             "time": "2019-09-20T09:35:01+00:00"
-        },
-        {
-            "name": "zendframework/zendframework1",
-            "version": "1.12.20",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/zendframework/zf1.git",
-                "reference": "737ef159654fbbef37cf9af742b2c8f9690c2ece"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/zendframework/zf1/zipball/737ef159654fbbef37cf9af742b2c8f9690c2ece",
-                "reference": "737ef159654fbbef37cf9af742b2c8f9690c2ece",
-                "shasum": ""
-            },
-            "require": {
-                "php": ">=5.2.11"
-            },
-            "require-dev": {
-                "phpunit/dbunit": "1.3.*",
-                "phpunit/phpunit": "3.7.*"
-            },
-            "type": "library",
-            "extra": {
-                "branch-alias": {
-                    "dev-master": "1.12.x-dev"
-                }
-            },
-            "autoload": {
-                "psr-0": {
-                    "Zend_": "library/"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "include-path": [
-                "library/"
-            ],
-            "license": [
-                "BSD-3-Clause"
-            ],
-            "description": "Zend Framework 1",
-            "homepage": "http://framework.zend.com/",
-            "keywords": [
-                "ZF1",
-                "framework"
-            ],
-            "abandoned": "zendframework/zendframework",
-            "time": "2016-09-08T14:50:34+00:00"
         }
     ],
     "packages-dev": [],

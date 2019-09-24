@@ -1,9 +1,9 @@
-FROM php:5.6-apache
+FROM php:7.3-apache
 
 ENV APACHE_DOCUMENT_ROOT /var/www/app/public
 
 RUN apt-get update && apt-get install -y libicu-dev && docker-php-ext-install -j$(nproc) intl
-RUN pecl install xdebug-2.5.5 && docker-php-ext-enable xdebug
+RUN pecl install xdebug && docker-php-ext-enable xdebug
 
 RUN sed -ri -e 's!/var/www/html!${APACHE_DOCUMENT_ROOT}!g' /etc/apache2/sites-available/*.conf
 RUN sed -ri -e 's!/var/www/!${APACHE_DOCUMENT_ROOT}!g' /etc/apache2/apache2.conf /etc/apache2/conf-available/*.conf
