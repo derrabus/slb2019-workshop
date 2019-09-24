@@ -12,7 +12,8 @@
     "minimum-stability": "stable",
     "require": {
         "php": "^5.6",
-        "tecnickcom/tcpdf": "^6.3"
+        "tecnickcom/tcpdf": "^6.3",
+        "zendframework/zendframework1": "^1.12"
     },
     "config": {
         "platform": {
@@ -20,11 +21,9 @@
         },
         "sort-packages": true
     },
-    "include-path": ["library"],
     "autoload": {
         "psr-0": {
-            "TravelOrganizer": "library",
-            "Zend": "library"
+            "TravelOrganizer": "library"
         },
         "classmap": [
             "application"
