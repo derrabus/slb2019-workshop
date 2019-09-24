@@ -14,7 +14,12 @@
         "php": "^7.3.9",
         "derrabus/ereg-shim": "^1.0",
         "shardj/zf1-future": "^1.14",
+        "symfony/console": "^4.3",
+        "symfony/dotenv": "^4.3",
         "symfony/flex": "^1.4",
+        "symfony/framework-bundle": "^4.3",
+        "symfony/twig-bundle": "^4.3",
+        "symfony/yaml": "^4.3",
         "tecnickcom/tcpdf": "^6.3"
     },
     "config": {
@@ -33,5 +38,11 @@
     },
     "require-dev": {
         "friendsofphp/php-cs-fixer": "^2.15"
+    },
+    "scripts": {
+        "auto-scripts": {
+            "cache:clear": "symfony-cmd",
+            "assets:install %PUBLIC_DIR%": "symfony-cmd"
+        }
     }
 }
