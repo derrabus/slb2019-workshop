@@ -125,7 +125,7 @@ class ReportController extends Zend_Controller_Action
     {
         $report = new Application_Model_Report();
         if ($this->hasParam('shortcut')) {
-            if (ereg('([0-9]{4})-([0-9]{3})', $this->getParam('shortcut'), $regs)) {
+            if (@ereg('([0-9]{4})-([0-9]{3})', $this->getParam('shortcut'), $regs)) {
                 $this->_reportMapper->findByYearAndNumber($regs[1], $regs[2], $report);
                 if ($report->getId()) {
                     if ($report->getOwnerId() != TravelOrganizer_Auth_UserProvider::getInstance()->getCurrentUser()->getId()) {
