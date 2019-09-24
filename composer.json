@@ -32,6 +32,9 @@
         "psr-0": {
             "TravelOrganizer": "library"
         },
+        "psr-4": {
+            "TravelOrganizer\\": "src"
+        },
         "classmap": [
             "application"
         ]
