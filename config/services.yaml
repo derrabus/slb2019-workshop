@@ -38,3 +38,16 @@ services:
         factory: Zend_Registry::get
         arguments:
             - Zend_Translate
+
+    Zend_Application:
+        class: Zend_Application
+        autowire: false
+        arguments:
+            - '%legacy_environment%'
+            - '%kernel.project_dir%/application/configs/application.ini'
+        calls:
+            - ['bootstrap']
+
+    legacy_application:
+        alias: Zend_Application
+        public: true

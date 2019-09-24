@@ -32,6 +32,8 @@ class Kernel extends BaseKernel
 
     protected function configureContainer(ContainerBuilder $container, LoaderInterface $loader): void
     {
+        $container->setParameter('legacy_environment', 'dev' === $this->getEnvironment() ? 'development' : 'production');
+
         $container->addResource(new FileResource($this->getProjectDir().'/config/bundles.php'));
         $container->setParameter('container.dumper.inline_class_loader', true);
         $confDir = $this->getProjectDir().'/config';

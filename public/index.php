@@ -1,9 +1,8 @@
 <?php
 
-use Symfony\Component\HttpFoundation\Response;
-use TravelOrganizer\Kernel;
 use Symfony\Component\Debug\Debug;
 use Symfony\Component\HttpFoundation\Request;
+use TravelOrganizer\Kernel;
 
 require dirname(__DIR__).'/config/bootstrap.php';
 
@@ -32,20 +31,10 @@ defined('APPLICATION_ENV')
 $kernel = new Kernel($_SERVER['APP_ENV'], (bool) $_SERVER['APP_DEBUG']);
 $kernel->boot();
 
-// Create application, bootstrap, and run
-$application = new Zend_Application(
-    APPLICATION_ENV,
-    APPLICATION_PATH.'/configs/application.ini'
-);
-$application->bootstrap();
+$kernel->getContainer()->get('legacy_application');
 
 $request = Request::createFromGlobals();
 $response = $kernel->handle($request);
-
-if (Response::HTTP_NOT_FOUND === $response->getStatusCode() || Response::HTTP_METHOD_NOT_ALLOWED === $response->getStatusCode()) {
-    $application->run();
-} else {
-    $response->send();
-}
+$response->send();
 
 $kernel->terminate($request, $response);

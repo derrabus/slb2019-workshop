@@ -6,6 +6,7 @@ use Symfony\Component\Finder\Finder;
 use Symfony\Component\Finder\SplFileInfo;
 use Symfony\Component\Routing\Route;
 use Symfony\Component\Routing\RouteCollection;
+use TravelOrganizer\Controller\LegacyBridgeController;
 
 final class RouteProvider
 {
@@ -42,7 +43,8 @@ final class RouteProvider
                     sprintf('/%s/%s/{suffix}', $controller, $action),
                     [
                         'zendController' => $controller,
-                        'zendAction' => $action
+                        'zendAction' => $action,
+                        '_controller' => LegacyBridgeController::class,
                     ],
                     [
                         'suffix' => '.*'
@@ -57,7 +59,8 @@ final class RouteProvider
                     sprintf('/%s', $controller),
                     [
                         'zendController' => $controller,
-                        'zendAction' => $action
+                        'zendAction' => $action,
+                        '_controller' => LegacyBridgeController::class,
                     ]
                 ));
 
@@ -69,7 +72,8 @@ final class RouteProvider
                     '/',
                     [
                         'zendController' => $controller,
-                        'zendAction' => $action
+                        'zendAction' => $action,
+                        '_controller' => LegacyBridgeController::class,
                     ]
                 ));
             }
