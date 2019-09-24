@@ -1,0 +1,18 @@
+<div class="container mt-4 mb-4">
+    <div class="mt-4 mb-4">
+        <h1>
+            <?= $this->translate('caption.report', [$this->report->getShortcut()]) ?>
+        </h1>
+    </div>
+
+    <div class="card mt-4 mb-4">
+        <div class="card-body">
+            <h2 class="card-title">
+                <?= $this->translate(sprintf('caption.newExpense.%s', $this->expenseType)) ?>
+            </h2>
+
+            <?= $this->form ?>
+
+        </div>
+    </div>
+</div>

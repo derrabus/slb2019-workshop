@@ -1,0 +1,56 @@
+<?php
+
+$this->headTitle('TravelOrganizer');
+
+$this
+    ->headLink()
+    ->appendStylesheet('/css/bootstrap.min.css')
+;
+
+$this
+    ->inlineScript()
+    ->appendFile('/js/jquery-3.3.1.slim.min.js')
+    ->appendFile('/js/popper.min.js')
+    ->appendFile('/js/bootstrap.min.js')
+;
+
+?>
+<?= $this->doctype() ?>
+
+<html lang="en">
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <?= $this->headLink() ?>
+
+    <?= $this->headTitle() ?>
+
+</head>
+<body>
+
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark d-flex justify-content-between">
+    <a class="navbar-brand" href="<?= $this->url(array(), null, true) ?>">TravelOrganizer</a>
+    <?php if (Zend_Auth::getInstance()->hasIdentity()): ?>
+    <ul class="navbar-nav">
+        <?php $minYear = intval(date('Y')) - 4; for ($year = intval(date('Y')); $year >= $minYear; $year--): ?>
+        <li class="nav-item">
+            <a class="nav-link" href="<?= $this->url(array('controller' => 'report', 'action' => 'index', 'year' => $year), null, true) ?>"><?= $year ?></a>
+        </li>
+        <?php endfor; ?>
+    </ul>
+    <ul class="navbar-nav">
+        <li class="nav-item">
+            <a class="nav-link" href="<?= $this->url(array('controller' => 'auth', 'action' => 'logout'), null, true) ?>"><?= $this->translate('label.sign_out') ?></a>
+        </li>
+    </ul>
+    <?php endif ?>
+</nav>
+
+<?= $this->layout()->content ?>
+
+<?= $this->inlineScript() ?>
+
+</body>
+</html>

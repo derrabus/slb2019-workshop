@@ -1,0 +1,94 @@
+<div class="container mt-4">
+    <div class="mt-4 mb-4">
+        <h1>
+            <?= $this->translate('caption.report', [$this->report->getShortcut()]) ?>
+        </h1>
+    </div>
+
+    <div class="card mt-4 mb-4">
+        <div class="card-body">
+            <div class="float-right text-right">
+                <a class="btn btn-outline-primary m-1" href="<?= $this->url(array('action' => 'edit')) ?>">
+                    <?= $this->translate('label.edit') ?>
+                </a>
+                <br/>
+                <a class="btn btn-outline-secondary m-1" href="<?= $this->url(array('action' => 'export')) ?>">
+                    <?= $this->translate('label.export') ?>
+                </a>
+            </div>
+
+            <dl>
+                <dt><?= $this->translate('label.startDate') ?></dt>
+                <dd><?= $this->formatDate()->full($this->report->getStartDate()) ?></dd>
+
+                <dt><?= $this->translate('label.endDate') ?></dt>
+                <dd><?= $this->formatDate()->full($this->report->getEndDate()) ?></dd>
+
+                <dt><?= $this->translate('label.occasion') ?></dt>
+                <dd><?= $this->escape($this->report->getOccasion()) ?></dd>
+
+                <dt><?= $this->translate('label.destination') ?></dt>
+                <dd><?= $this->escape($this->report->getDestination()) ?></dd>
+
+                <dt><?= $this->translate('label.classification') ?></dt>
+                <dd><?= $this->escape($this->report->getClassification()) ?></dd>
+            </dl>
+        </div>
+    </div>
+
+    <?php foreach (Application_Model_Expense::$VALID_TYPES as $expenseType): ?>
+    <div class="card mt-4 mb-4">
+        <div class="card-body">
+            <a class="btn btn-outline-success float-right" href="<?= $this->url(array('controller' => 'expense', 'action' => 'create', 'report' => $this->report->getId(), 'type' => $expenseType), null, true) ?>">
+                <?= $this->translate('label.add') ?>
+            </a>
+            <h2 class="card-title">
+                <?= $this->translate(sprintf('caption.expense_type_%s', $expenseType)) ?>
+            </h2>
+
+            <?php if (isset($this->expenses[$expenseType])): ?>
+            <table class="table table-striped">
+                <thead>
+                <tr>
+                    <th scope="col"><?= $this->translate('label.date') ?></th>
+                    <th scope="col"><?= $this->translate('label.description') ?></th>
+                    <th scope="col" class="text-right"><?= $this->translate('label.grossAmount') ?></th>
+                    <th scope="col" class="text-right"><?= $this->translate('label.taxAmount') ?></th>
+                    <th scope="col" class="text-right"><?= $this->translate('label.netAmount') ?></th>
+                    <th scope="col"></th>
+                </tr>
+                </thead>
+                <?php if (isset($this->totals[$expenseType])): ?>
+                <tfoot>
+                <tr>
+                    <th scope="col"></th>
+                    <th scope="col"></th>
+                    <th scope="col" class="text-right"><?= $this->currency($this->totals[$expenseType]['gross'], 'EUR') ?></th>
+                    <th scope="col" class="text-right"><?= $this->currency($this->totals[$expenseType]['tax'], 'EUR') ?></th>
+                    <th scope="col" class="text-right"><?= $this->currency($this->totals[$expenseType]['net'], 'EUR' )?></th>
+                    <th scope="col"></th>
+                </tr>
+                </tfoot>
+                <?php endif ?>
+                <tbody>
+                <?php foreach ($this->expenses[$expenseType] as $expense): ?>
+                <tr>
+                    <td><?= $this->formatDate($expense->getDate()) ?></td>
+                    <td><?= $this->escape($expense->getDescription()) ?></td>
+                    <td class="text-right"><?= $this->currency($expense->getGrossAmount(), 'EUR') ?></td>
+                    <td class="text-right"><?= $this->currency($expense->getTaxAmount(), 'EUR') ?></td>
+                    <td class="text-right"><?= $this->currency($expense->getNetAmount(), 'EUR') ?></td>
+                    <td class="text-right">
+                        <a class="btn btn-sm btn-outline-primary" href="<?= $this->url(array('controller' => 'expense', 'action' => 'edit', 'id' => $expense->getId())) ?>">
+                            <?= $this->translate('label.edit') ?>
+                        </a>
+                    </td>
+                </tr>
+                <?php endforeach ?>
+                </tbody>
+            </table>
+            <?php endif ?>
+        </div>
+    </div>
+    <?php endforeach ?>
+</div>

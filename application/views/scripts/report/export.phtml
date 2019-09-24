@@ -1,0 +1,86 @@
+<html>
+<body>
+
+<h1><?= $this->translate('caption.report', [$this->report->getShortcut()]) ?></h1>
+
+<hr />&nbsp;<br />
+
+<font size="10">
+    <table cellpadding="2">
+        <tr>
+            <td width="25%"><b><?= $this->translate('label.name') ?>:</b></td>
+            <td width="75%"><?= TravelOrganizer_Auth_UserProvider::getInstance()->getCurrentUser()->getFullName() ?></td>
+        </tr>
+        <tr>
+            <td><b><?= $this->translate('label.startEndDate') ?>:</b></td>
+            <td><?= $this->formatDate()->full($this->report->getStartDate()) ?><?php if ($this->report->getStartDate() != $this->report->getEndDate()): ?> &mdash; <?= $this->formatDate()->full($this->report->getEndDate()) ?><?php endif ?></td>
+        </tr>
+        <tr>
+            <td><b><?= $this->translate('label.occasion') ?></b></td>
+            <td><?= $this->escape($this->report->getOccasion()) ?></td>
+        </tr>
+        <tr>
+            <td><b><?= $this->translate('label.destination') ?></b></td>
+            <td><?= $this->escape($this->report->getDestination()) ?></td>
+        </tr>
+        <tr>
+            <td><b><?= $this->translate('label.classification') ?></b></td>
+            <td><?= $this->escape($this->report->getClassification()) ?></td>
+        </tr>
+    </table>
+</font>
+
+<br />&nbsp;<hr />&nbsp;<br />
+
+<table border="1" cellpadding="5">
+    <tr>
+        <td width="64%"><b><?= $this->translate('column.travelExpenses') ?></b></td>
+        <td width="12%"><b><?= $this->translate('column.grossAmount') ?></b></td>
+        <td width="12%"><b><?= $this->translate('column.taxAmount') ?></b></td>
+        <td width="12%"><b><?= $this->translate('column.netAmount') ?></b></td>
+    </tr>
+    <?php foreach (Application_Model_Expense::$VALID_TYPES as $expenseType): ?>
+    <tr>
+        <td colspan="4" align="center"><b><?= $this->translate(sprintf('caption.expense_type_%s', $expenseType)) ?></b></td>
+    </tr>
+    <?php if (isset($this->expenses[$expenseType])) foreach ($this->expenses[$expenseType] as $expense): ?>
+    <tr>
+        <td><?= $this->formatDate($expense->getDate()) ?> <?= $this->escape($expense->getDescription()) ?></td>
+        <td align="right"><?= $this->currency($expense->getGrossAmount(), 'EUR') ?></td>
+        <td align="right"><?= $this->currency($expense->getTaxAmount(), 'EUR') ?></td>
+        <td align="right"><?= $this->currency($expense->getNetAmount(), 'EUR') ?></td>
+    </tr>
+    <?php endforeach ?>
+    <tr>
+        <td><b><?= $this->translate(sprintf('label.subtotal.expense_type_%s', $expenseType)) ?></b></td>
+        <?php if (isset($this->totals[$expenseType])): ?>
+        <td align="right"><b><?= $this->currency($this->totals[$expenseType]['gross'], 'EUR') ?></b></td>
+        <td align="right"><b><?= $this->currency($this->totals[$expenseType]['tax'], 'EUR') ?></b></td>
+        <td align="right"><b><?= $this->currency($this->totals[$expenseType]['net'], 'EUR') ?></b></td>
+        <?php else: ?>
+        <td align="right"><b><?= $this->currency(0, 'EUR') ?></b></td>
+        <td align="right"><b><?= $this->currency(0, 'EUR') ?></b></td>
+        <td align="right"><b><?= $this->currency(0, 'EUR') ?></b></td>
+        <?php endif ?>
+    </tr>
+    <?php endforeach ?>
+    <tr><td colspan="4"></td></tr>
+    <tr>
+        <td><b><?= $this->translate('label.deductibleExpenses') ?></b></td>
+        <?php if (isset($this->totals['total']['gross'])): ?>
+        <td align="right"><b><?= $this->currency($this->totals['total']['gross'], 'EUR') ?></b></td>
+        <td align="right"><b><?= $this->currency($this->totals['total']['tax'], 'EUR') ?></b></td>
+        <td align="right"><b><?= $this->currency($this->totals['total']['net'], 'EUR') ?></b></td>
+        <?php else: ?>
+        <td align="right"><b><?= $this->currency(0, 'EUR') ?></b></td>
+        <td align="right"><b><?= $this->currency(0, 'EUR') ?></b></td>
+        <td align="right"><b><?= $this->currency(0, 'EUR') ?></b></td>
+        <?php endif ?>
+    </tr>
+</table>
+
+<br />&nbsp;<br />&nbsp;<br />&nbsp;<br />&nbsp;<br />&nbsp;<br />&nbsp;<br />&nbsp;<br />&nbsp;<hr />
+<p align="right"><?= $this->translate('label.dateAndSignature') ?></p>
+
+</body>
+</html>

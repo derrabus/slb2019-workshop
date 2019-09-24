@@ -1,0 +1,15 @@
+<label for="<?= $this->element->getId() ?>">
+    <?= $this->element->getLabel() ?>
+
+    <?php if ($this->element->getMessages()): ?>
+    <span class="invalid-feedback d-block">
+        <?php foreach ($this->element->getMessages() as $message): ?>
+        <span class="d-block">
+            <span class="form-error-icon badge badge-danger text-uppercase">Fehler</span> <span class="form-error-message"><?= $message ?></span>
+        </span>
+        <?php endforeach ?>
+    </span>
+    <?php endif ?>
+</label>
+
+<?= $this->content ?>

@@ -1,0 +1,50 @@
+<div class="container-fluid mt-4 mb-4">
+    <div class="mt-4 mb-4 row">
+        <div class="col">
+            <h1>
+                <?= $this->translate('caption.reports_by_year', $this->year) ?>
+            </h1>
+        </div>
+        <div class="col text-right">
+            <a class="btn btn-outline-success" href="<?= $this->url(array('action' => 'create')) ?>">
+                <?= $this->translate('label.add') ?>
+            </a>
+        </div>
+    </div>
+
+    <?php if (!empty($this->reports)): ?>
+    <div class="mt-4 mb-4">
+        <table class="table table-striped">
+            <thead>
+            <tr>
+                <th scope="col"><?= $this->translate('label.number') ?></th>
+                <th scope="col"><?= $this->translate('label.startDate') ?></th>
+                <th scope="col"><?= $this->translate('label.endDate') ?></th>
+                <th scope="col"><?= $this->translate('label.destination') ?></th>
+                <th scope="col"><?= $this->translate('label.occasion') ?></th>
+                <th scope="col"></th>
+            </tr>
+            </thead>
+            <tbody>
+            <?php foreach ($this->reports as $report): ?>
+            <tr>
+                <td><?= $this->escape($report->getShortcut()) ?></td>
+                <td><?= $this->formatDate($report->getStartDate()) ?></td>
+                <td><?= $this->formatDate($report->getEndDate()) ?></td>
+                <td><?= $this->escape($report->getDestination()) ?></td>
+                <td><?= $this->escape($report->getOccasion()) ?></td>
+                <td class="text-right">
+                    <a class="btn btn-sm btn-outline-secondary" href="<?= $this->url(array('controller' => 'report', 'action' => 'export', 'id' => $report->getId()), null, true) ?>">
+                        <?= $this->translate('label.export') ?>
+                    </a>
+                    <a class="btn btn-sm btn-outline-primary" href="<?= $this->url(array('controller' => 'report', 'action' => 'view', 'id' => $report->getId()), null, true) ?>">
+                        <?= $this->translate('label.edit') ?>
+                    </a>
+                </td>
+            </tr>
+            <?php endforeach ?>
+            </tbody>
+        </table>
+    </div>
+    <?php endif ?>
+</div>

@@ -1,0 +1,211 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xliff xmlns="urn:oasis:names:tc:xliff:document:1.2" version="1.2">
+    <file source-language="en" target-language="de_DE" datatype="plaintext" original="file.ext">
+        <body>
+            <trans-unit id="HX0BgKt" resname="label.sign_out">
+                <source>label.sign_out</source>
+                <target>Abmelden</target>
+            </trans-unit>
+            <trans-unit id="tFfumEl" resname="caption.sign_in">
+                <source>caption.sign_in</source>
+                <target>Bitte melden Sie sich an.</target>
+            </trans-unit>
+            <trans-unit id="D2N6_cP" resname="label.username">
+                <source>label.username</source>
+                <target>Benutzername</target>
+            </trans-unit>
+            <trans-unit id="9pvowqn" resname="label.password">
+                <source>label.password</source>
+                <target>Passwort</target>
+            </trans-unit>
+            <trans-unit id="0" resname="message.invalid_credentials">
+                <source>message.invalid_credentials</source>
+                <target>Ungültige Zugangsdaten</target>
+            </trans-unit>
+            <trans-unit id="9xXq1X6" resname="label.sign_in">
+                <source>label.sign_in</source>
+                <target>Anmelden</target>
+            </trans-unit>
+            <trans-unit id="yDrMj3u" resname="label.save">
+                <source>label.save</source>
+                <target>Speichern</target>
+            </trans-unit>
+            <trans-unit id="M_QEucS" resname="label.add">
+                <source>label.add</source>
+                <target>Hinzufügen</target>
+            </trans-unit>
+            <trans-unit id="DXNFV9R" resname="label.edit">
+                <source>label.edit</source>
+                <target>Bearbeiten</target>
+            </trans-unit>
+            <trans-unit id="8CI.MGA" resname="label.export">
+                <source>label.export</source>
+                <target>Exportieren</target>
+            </trans-unit>
+            <trans-unit id="8yeGT7d" resname="label.cancel">
+                <source>label.cancel</source>
+                <target>Abbrechen</target>
+            </trans-unit>
+            <trans-unit id="YESFL_t" resname="caption.hello">
+                <source>caption.hello</source>
+                <target>Hallo %1$s!</target>
+            </trans-unit>
+            <trans-unit id="H1qEi4d" resname="label.date">
+                <source>label.date</source>
+                <target>Datum</target>
+            </trans-unit>
+            <trans-unit id="4cEApe1" resname="label.description">
+                <source>label.description</source>
+                <target>Beschreibung</target>
+            </trans-unit>
+            <trans-unit id="oiFkBuw" resname="label.grossAmount">
+                <source>label.grossAmount</source>
+                <target>Brutto</target>
+            </trans-unit>
+            <trans-unit id="UvT1Fzp" resname="label.taxAmount">
+                <source>label.taxAmount</source>
+                <target>MwSt.</target>
+            </trans-unit>
+            <trans-unit id="jSYrIyk" resname="label.netAmount">
+                <source>label.netAmount</source>
+                <target>Netto</target>
+            </trans-unit>
+            <trans-unit id="6X2AGwZ" resname="caption.newExpense.transportation">
+                <source>caption.newExpense.transportation</source>
+                <target>Fahrtkosten hinzufügen</target>
+            </trans-unit>
+            <trans-unit id="0FeY_Ey" resname="caption.newExpense.per_diem">
+                <source>caption.newExpense.per_diem</source>
+                <target>Verpflegungsmehraufwand hinzufügen</target>
+            </trans-unit>
+            <trans-unit id="v6spUxr" resname="caption.newExpense.accommodation">
+                <source>caption.newExpense.accommodation</source>
+                <target>Übernachtungskosten hinzufügen</target>
+            </trans-unit>
+            <trans-unit id="McL87TZ" resname="caption.newExpense.ancillary">
+                <source>caption.newExpense.ancillary</source>
+                <target>Reise-Nebenkosten hinzufügen</target>
+            </trans-unit>
+            <trans-unit id="1" resname="caption.editExpense.transportation">
+                <source>caption.editExpense.transportation</source>
+                <target>Fahrtkosten bearbeiten</target>
+            </trans-unit>
+            <trans-unit id="2" resname="caption.editExpense.per_diem">
+                <source>caption.editExpense.per_diem</source>
+                <target>Verpflegungsmehraufwand bearbeiten</target>
+            </trans-unit>
+            <trans-unit id="3" resname="caption.editExpense.accommodation">
+                <source>caption.editExpense.accommodation</source>
+                <target>Übernachtungskosten bearbeiten</target>
+            </trans-unit>
+            <trans-unit id="4" resname="caption.editExpense.ancillary">
+                <source>caption.editExpense.ancillary</source>
+                <target>Reise-Nebenkosten bearbeiten</target>
+            </trans-unit>
+            <trans-unit id="14PDgg1" resname="caption.report">
+                <source>caption.report</source>
+                <target>Reisekostenabrechnung %1$s</target>
+            </trans-unit>
+            <trans-unit id="FAcYK5g" resname="caption.new_report">
+                <source>caption.new_report</source>
+                <target>Neue Abrechnung</target>
+            </trans-unit>
+            <trans-unit id="ysOvPSq" resname="label.name">
+                <source>label.name</source>
+                <target>Name</target>
+            </trans-unit>
+            <trans-unit id="p33_uRL" resname="label.startEndDate">
+                <source>label.startEndDate</source>
+                <target>Beginn/Ende</target>
+            </trans-unit>
+            <trans-unit id="Mwa5WuH" resname="label.occasion">
+                <source>label.occasion</source>
+                <target>Anlass der Reise</target>
+            </trans-unit>
+            <trans-unit id="QZm2egY" resname="label.destination">
+                <source>label.destination</source>
+                <target>Reiseziel</target>
+            </trans-unit>
+            <trans-unit id="PZrYxMs" resname="label.classification">
+                <source>label.classification</source>
+                <target>Steuerliche Zuordnung</target>
+            </trans-unit>
+            <trans-unit id="Q4M1275" resname="column.travelExpenses">
+                <source>column.travelExpenses</source>
+                <target>Reisekosten</target>
+            </trans-unit>
+            <trans-unit id="YYIw55W" resname="column.grossAmount">
+                <source>column.grossAmount</source>
+                <target>Brutto</target>
+            </trans-unit>
+            <trans-unit id="TXehHd2" resname="column.taxAmount">
+                <source>column.taxAmount</source>
+                <target>MwSt.</target>
+            </trans-unit>
+            <trans-unit id="9nksWnf" resname="column.netAmount">
+                <source>column.netAmount</source>
+                <target>Netto</target>
+            </trans-unit>
+            <trans-unit id="Xuulu.3" resname="label.deductibleExpenses">
+                <source>label.deductibleExpenses</source>
+                <target>Abzugsfähige Reisekosten</target>
+            </trans-unit>
+            <trans-unit id="AOyp2Tf" resname="label.dateAndSignature">
+                <source>label.dateAndSignature</source>
+                <target>Datum, Unterschrift</target>
+            </trans-unit>
+            <trans-unit id="_a4fcrw" resname="caption.reports_by_year">
+                <source>caption.reports_by_year</source>
+                <target>Abrechnungen des Jahres %1$s</target>
+            </trans-unit>
+            <trans-unit id="u2_FJj1" resname="label.year">
+                <source>label.year</source>
+                <target>Jahr</target>
+            </trans-unit>
+            <trans-unit id="39AtPxQ" resname="label.number">
+                <source>label.number</source>
+                <target>Nummer</target>
+            </trans-unit>
+            <trans-unit id="Tzdno5x" resname="label.startDate">
+                <source>label.startDate</source>
+                <target>Beginn</target>
+            </trans-unit>
+            <trans-unit id="ktCBh4P" resname="label.endDate">
+                <source>label.endDate</source>
+                <target>Ende</target>
+            </trans-unit>
+            <trans-unit id="FZjpLoA" resname="caption.expense_type_transportation">
+                <source>caption.expense_type_transportation</source>
+                <target>Fahrtkosten</target>
+            </trans-unit>
+            <trans-unit id="8PZsCAV" resname="caption.expense_type_per_diem">
+                <source>caption.expense_type_per_diem</source>
+                <target>Verpflegungsmehraufwand</target>
+            </trans-unit>
+            <trans-unit id="kcVDE71" resname="caption.expense_type_accommodation">
+                <source>caption.expense_type_accommodation</source>
+                <target>Übernachtungskosten</target>
+            </trans-unit>
+            <trans-unit id=".VECH70" resname="caption.expense_type_ancillary">
+                <source>caption.expense_type_ancillary</source>
+                <target>Reise-Nebenkosten</target>
+            </trans-unit>
+            <trans-unit id="ok2566_" resname="label.subtotal.expense_type_transportation">
+                <source>label.subtotal.expense_type_transportation</source>
+                <target>Zwischensumme: Fahrtkosten</target>
+            </trans-unit>
+            <trans-unit id="YJEz2me" resname="label.subtotal.expense_type_per_diem">
+                <source>label.subtotal.expense_type_per_diem</source>
+                <target>Zwischensumme: Verpflegungsmehraufwand</target>
+            </trans-unit>
+            <trans-unit id="9cGgpYw" resname="label.subtotal.expense_type_accommodation">
+                <source>label.subtotal.expense_type_accommodation</source>
+                <target>Zwischensumme: Übernachtungskosten</target>
+            </trans-unit>
+            <trans-unit id="2tPukga" resname="label.subtotal.expense_type_ancillary">
+                <source>label.subtotal.expense_type_ancillary</source>
+                <target>Zwischensumme: Reise-Nebenkosten</target>
+            </trans-unit>
+        </body>
+    </file>
+</xliff>

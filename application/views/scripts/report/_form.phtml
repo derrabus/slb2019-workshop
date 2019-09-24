@@ -1,0 +1,26 @@
+<div class="form-row">
+    <div class="col-2">
+        <?= $this->element->getElement('year') ?>
+    </div>
+    <div class="col-2">
+        <?= $this->element->getElement('number') ?>
+    </div>
+    <div class="col-4">
+        <?= $this->element->getElement('start_date') ?>
+    </div>
+    <div class="col-4">
+        <?= $this->element->getElement('end_date') ?>
+    </div>
+</div>
+
+<?= $this->element->getElement('occasion') ?>
+<?= $this->element->getElement('destination') ?>
+<?= $this->element->getElement('classification') ?>
+<?= $this->element->getElement('csrf') ?>
+
+<div class="form-group text-right">
+    <a class="btn btn-secondary" href="<?= $this->url(array('action' => 'view')) ?>">
+        <?= $this->translate('label.cancel') ?>
+    </a>
+    <button type="submit" class="btn btn-primary"><?= $this->translate('label.save') ?></button>
+</div>

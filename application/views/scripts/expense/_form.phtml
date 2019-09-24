@@ -1,0 +1,24 @@
+<?= $this->element->getElement('reportId') ?>
+
+<div class="form-row">
+    <div class="col-4">
+        <?= $this->element->getElement('date') ?>
+    </div>
+    <div class="col-4">
+        <?= $this->element->getElement('gross') ?>
+    </div>
+    <div class="col-4">
+        <?= $this->element->getElement('tax') ?>
+    </div>
+</div>
+
+<?= $this->element->getElement('description') ?>
+
+<?= $this->element->getElement('csrf') ?>
+
+<div class="form-group text-right">
+    <a class="btn btn-secondary" href="<?= $this->url(array('controller' => 'report', 'action' => 'view', 'id' => $this->element->getElement('reportId')->getValue()), null, true) ?>">
+        <?= $this->translate('label.cancel') ?>
+    </a>
+    <button type="submit" class="btn btn-primary"><?= $this->translate('label.save') ?></button>
+</div>

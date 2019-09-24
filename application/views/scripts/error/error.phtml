@@ -1,0 +1,30 @@
+<div class="container-fluid mt-4 mb-4">
+    <h1>An error occurred</h1>
+    <h2><?= $this->message ?></h2>
+
+    <?php if (isset($this->exception)): ?>
+
+    <?php $exception = $this->exception; ?>
+    <?php while($exception): ?>
+
+    <h3>Exception information:</h3>
+    <p>
+      <b>Type:</b> <?= get_class($this->exception) ?>
+    </p>
+    <p>
+      <b>Message:</b> <?= $this->exception->getMessage() ?>
+    </p>
+
+    <h3>Stack trace:</h3>
+      <pre><?= $this->exception->getTraceAsString() ?>
+    </pre>
+
+    <?php $exception = $exception->getPrevious(); ?>
+    <?php endwhile ?>
+
+    <h3>Request Parameters:</h3>
+    <pre><?= $this->escape(var_export($this->request->getParams(), true)) ?>
+    </pre>
+
+    <?php endif ?>
+</div>
