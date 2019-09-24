@@ -36,7 +36,7 @@ final class TravelOrganizer_Auth_UserProvider
         return self::$instance;
     }
 
-    public function getCurrentUser()
+    public function getCurrentUser(): ?Application_Model_User
     {
         return $this->user;
     }

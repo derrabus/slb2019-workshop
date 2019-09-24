@@ -1,6 +1,8 @@
 <?php
 
-class Application_Model_User
+use Symfony\Component\Security\Core\User\UserInterface;
+
+class Application_Model_User implements UserInterface
 {
     /** @var int */
     protected $_id;
@@ -133,5 +135,19 @@ class Application_Model_User
         $this->_locale = $locale;
 
         return $this;
+    }
+
+    public function getRoles(): array
+    {
+        return ['ROLE_USER'];
+    }
+
+    public function getSalt(): ?string
+    {
+        return $this->getPasswordSalt();
+    }
+
+    public function eraseCredentials()
+    {
     }
 }
