@@ -14,10 +14,12 @@
         "php": "^7.3.9",
         "derrabus/ereg-shim": "^1.0",
         "shardj/zf1-future": "^1.14",
+        "symfony/asset": "^4.3",
         "symfony/console": "^4.3",
         "symfony/dotenv": "^4.3",
         "symfony/flex": "^1.4",
         "symfony/framework-bundle": "^4.3",
+        "symfony/monolog-bundle": "^3.4",
         "symfony/twig-bundle": "^4.3",
         "symfony/yaml": "^4.3",
         "tecnickcom/tcpdf": "^6.3"
@@ -40,7 +42,9 @@
         ]
     },
     "require-dev": {
-        "friendsofphp/php-cs-fixer": "^2.15"
+        "friendsofphp/php-cs-fixer": "^2.15",
+        "symfony/debug-bundle": "^4.3",
+        "symfony/profiler-pack": "^1.0"
     },
     "scripts": {
         "auto-scripts": {
