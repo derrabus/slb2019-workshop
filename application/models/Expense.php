@@ -174,4 +174,3 @@ class Application_Model_Expense
         return $this->_grossAmount - $this->_taxAmount;
     }
 }
-

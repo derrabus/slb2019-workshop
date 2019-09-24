@@ -2,7 +2,6 @@
 
 class IndexController extends Zend_Controller_Action
 {
-
     public function init()
     {
         if (!Zend_Auth::getInstance()->hasIdentity()) {
@@ -14,7 +13,4 @@ class IndexController extends Zend_Controller_Action
     {
         // action body
     }
-
-
 }
-

@@ -41,5 +41,7 @@ final class TravelOrganizer_Auth_UserProvider
         return $this->user;
     }
 
-    private function __construct() {}
+    private function __construct()
+    {
+    }
 }

@@ -2,29 +2,25 @@
 
 class Application_Form_Login extends TravelOrganizer_Form_AbstractForm
 {
-
     public function init()
     {
         $this->setMethod('post');
 
         $this->addElement(
-            'text', 'username', array(
+            'text', 'username', [
             'label' => 'label.username',
             'required' => true,
-            'filters'    => array('StringTrim'),
-        ));
+            'filters' => ['StringTrim'],
+        ]);
 
-        $this->addElement('password', 'password', array(
+        $this->addElement('password', 'password', [
             'label' => 'label.password',
             'required' => true,
-        ));
+        ]);
 
-        $this->addElement('submit', 'submit', array(
-            'ignore'   => true,
-            'label'    => 'label.sign_in',
-        ));
+        $this->addElement('submit', 'submit', [
+            'ignore' => true,
+            'label' => 'label.sign_in',
+        ]);
     }
-
-
 }
-

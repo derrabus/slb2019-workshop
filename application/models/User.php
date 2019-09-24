@@ -135,4 +135,3 @@ class Application_Model_User
         return $this;
     }
 }
-

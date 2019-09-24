@@ -29,12 +29,12 @@ class ExpenseController extends Zend_Controller_Action
                 if (is_string($expenseType) && in_array($expenseType, Application_Model_Expense::$VALID_TYPES)) {
                     $this->view->expenseType = $expenseType;
                     $form = new Application_Form_Expense();
-                    $form->setDefaults(array(
+                    $form->setDefaults([
                         'reportId' => $report->getId(),
                         'date' => date('Y-m-d'),
                         'gross' => .0,
                         'tax' => .0,
-                    ));
+                    ]);
 
                     $this->view->form = $form;
 
@@ -49,9 +49,9 @@ class ExpenseController extends Zend_Controller_Action
 
                         $this->_expenseMapper->save($expense);
 
-                        $this->_helper->redirector('view', 'report', null, array(
-                            'id' => $report->getId()
-                        ));
+                        $this->_helper->redirector('view', 'report', null, [
+                            'id' => $report->getId(),
+                        ]);
                     }
                 } else {
                     throw new Zend_Controller_Action_Exception('Invalid expense type', 404);
@@ -75,16 +75,16 @@ class ExpenseController extends Zend_Controller_Action
                 $report = $this->findReport($expense->getReportId());
                 $this->view->report = $report;
                 $this->view->expenseType = $expense->getType();
-                $numberFilter = new Zend_Filter_NormalizedToLocalized(array('precision' => 2));
+                $numberFilter = new Zend_Filter_NormalizedToLocalized(['precision' => 2]);
 
                 $form = new Application_Form_Expense();
-                $form->setDefaults(array(
+                $form->setDefaults([
                     'reportId' => $expense->getReportId(),
                     'date' => $expense->getDate()->format('Y-m-d'),
                     'description' => $expense->getDescription(),
                     'gross' => $numberFilter->filter($expense->getGrossAmount()),
                     'tax' => $numberFilter->filter($expense->getTaxAmount()),
-                ));
+                ]);
 
                 $this->view->form = $form;
 
@@ -92,9 +92,9 @@ class ExpenseController extends Zend_Controller_Action
                     $this->mapFormToModel($form, $expense);
                     $this->_expenseMapper->save($expense);
 
-                    $this->_helper->redirector('view', 'report', null, array(
-                        'id' => $report->getId()
-                    ));
+                    $this->_helper->redirector('view', 'report', null, [
+                        'id' => $report->getId(),
+                    ]);
                 }
             } else {
                 throw new Zend_Controller_Action_Exception('Expense not found', 404);
@@ -118,7 +118,7 @@ class ExpenseController extends Zend_Controller_Action
     }
 
     /**
-     * @param Zend_Form  $form
+     * @param Zend_Form                 $form
      * @param Application_Model_Expense $expense
      */
     protected function mapFormToModel(Zend_Form $form, Application_Model_Expense $expense)
@@ -134,5 +134,3 @@ class ExpenseController extends Zend_Controller_Action
         ;
     }
 }
-
-

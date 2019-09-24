@@ -35,11 +35,11 @@ class ReportController extends Zend_Controller_Action
         $defaultDate->setDate($year, $defaultDate->format('m'), $defaultDate->format('d'));
 
         $form = new Application_Form_Report();
-        $form->setDefaults(array(
+        $form->setDefaults([
             'year' => $year,
             'start_date' => $defaultDate->format('Y-m-d'),
             'end_date' => $defaultDate->format('Y-m-d'),
-        ));
+        ]);
 
         if ($this->getRequest()->isPost() && $form->isValid($this->getRequest()->getPost())) {
             $report = new Application_Model_Report();
@@ -51,7 +51,7 @@ class ReportController extends Zend_Controller_Action
             $this->mapFormToModel($form, $report);
 
             $this->_reportMapper->save($report);
-            $this->_helper->redirector('view', 'report', null, array('id' => $report->getId()));
+            $this->_helper->redirector('view', 'report', null, ['id' => $report->getId()]);
         } else {
             $this->view->form = $form;
         }
@@ -86,7 +86,7 @@ class ReportController extends Zend_Controller_Action
         $response->setHeader('Content-Type', 'application/pdf');
         $response->setHeader('Content-Disposition', sprintf('inline; filename=%s', $filename));
         $response->appendBody($renderer->renderDocument(
-            $this->view->translate('caption.report', array($report->getShortcut())),
+            $this->view->translate('caption.report', [$report->getShortcut()]),
             $filename,
             $this->view->render('report/export.phtml')
         ));
@@ -98,7 +98,7 @@ class ReportController extends Zend_Controller_Action
         $this->view->report = $report;
 
         $form = new Application_Form_Report();
-        $form->setDefaults(array(
+        $form->setDefaults([
             'year' => $report->getYear(),
             'number' => $report->getNumber(),
             'start_date' => $report->getStartDate()->format('Y-m-d'),
@@ -106,13 +106,13 @@ class ReportController extends Zend_Controller_Action
             'occasion' => $report->getOccasion(),
             'destination' => $report->getDestination(),
             'classification' => $report->getClassification(),
-        ));
+        ]);
 
         if ($this->getRequest()->isPost() && $form->isValid($this->getRequest()->getPost())) {
             $this->mapFormToModel($form, $report);
 
             $this->_reportMapper->save($report);
-            $this->_helper->redirector('view', 'report', null, array('id' => $report->getId()));
+            $this->_helper->redirector('view', 'report', null, ['id' => $report->getId()]);
         } else {
             $this->view->form = $form;
         }
@@ -155,7 +155,7 @@ class ReportController extends Zend_Controller_Action
     }
 
     /**
-     * @param Zend_Form $form
+     * @param Zend_Form                $form
      * @param Application_Model_Report $report
      */
     protected function mapFormToModel(Zend_Form $form, Application_Model_Report $report)
@@ -166,14 +166,8 @@ class ReportController extends Zend_Controller_Action
             ->setEndDate(DateTime::createFromFormat('Y-m-d', $data['end_date']))
         ;
 
-        foreach (array('number', 'occasion', 'destination', 'classification') as $field) {
-            call_user_func(array($report, 'set'.ucfirst($field)), $data[$field]);
+        foreach (['number', 'occasion', 'destination', 'classification'] as $field) {
+            call_user_func([$report, 'set'.ucfirst($field)], $data[$field]);
         }
     }
-
-
 }
-
-
-
-

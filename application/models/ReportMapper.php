@@ -8,6 +8,7 @@ class Application_Model_ReportMapper
      * @param string|Zend_Db_Table_Abstract $dbTable
      *
      * @return $this
+     *
      * @throws Exception
      */
     public function setDbTable($dbTable)
@@ -19,6 +20,7 @@ class Application_Model_ReportMapper
             throw new Exception('Invalid table data gateway provided');
         }
         $this->_dbTable = $dbTable;
+
         return $this;
     }
 
@@ -30,6 +32,7 @@ class Application_Model_ReportMapper
         if (null === $this->_dbTable) {
             $this->setDbTable('Application_Model_DbTable_Report');
         }
+
         return $this->_dbTable;
     }
 
@@ -38,21 +41,21 @@ class Application_Model_ReportMapper
      */
     public function save(Application_Model_Report $report)
     {
-        $data = array(
+        $data = [
             'owner_id' => $report->getOwnerId(),
             'start_date' => $report->getStartDate()->format('Y-m-d'),
             'end_date' => $report->getEndDate()->format('Y-m-d'),
-        );
+        ];
 
         foreach (['year', 'number', 'occasion', 'destination', 'classification'] as $field) {
-            $data[$field] = $report->{'get' . ucfirst($field)}();
+            $data[$field] = $report->{'get'.ucfirst($field)}();
         }
 
         if (null === ($id = $report->getId())) {
             unset($data['id']);
             $report->setId($this->getDbTable()->insert($data));
         } else {
-            $this->getDbTable()->update($data, array('id = ?' => $id));
+            $this->getDbTable()->update($data, ['id = ?' => $id]);
         }
     }
 
@@ -93,12 +96,13 @@ class Application_Model_ReportMapper
     public function fetchAll()
     {
         $resultSet = $this->getDbTable()->fetchAll();
-        $entries   = array();
+        $entries = [];
         foreach ($resultSet as $row) {
             $entry = new Application_Model_Report();
             $this->mapRowToModel($row, $entry);
             $entries[] = $entry;
         }
+
         return $entries;
     }
 
@@ -111,12 +115,13 @@ class Application_Model_ReportMapper
     public function fetchByYearAndOwner($year, $owner)
     {
         $resultSet = $this->getDbTable()->fetchAll(['year = ?' => $year, 'owner_id = ?' => $owner]);
-        $entries   = array();
+        $entries = [];
         foreach ($resultSet as $row) {
             $entry = new Application_Model_Report();
             $this->mapRowToModel($row, $entry);
             $entries[] = $entry;
         }
+
         return $entries;
     }
 
@@ -135,4 +140,3 @@ class Application_Model_ReportMapper
         ;
     }
 }
-

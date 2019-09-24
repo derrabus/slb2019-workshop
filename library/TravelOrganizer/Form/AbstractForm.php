@@ -12,15 +12,15 @@ abstract class TravelOrganizer_Form_AbstractForm extends Zend_Form
             case 'text':
             case 'password':
                 if (!isset($options['decorators'])) {
-                    $options['decorators'] = array(
+                    $options['decorators'] = [
                         'ViewHelper',
-                        array('ViewScript', array('viewScript' => '_form_label.phtml', 'placement' => false)),
-                        array('HtmlTag', array('tag' => 'div', 'class' => 'form-group')),
-                    );
+                        ['ViewScript', ['viewScript' => '_form_label.phtml', 'placement' => false]],
+                        ['HtmlTag', ['tag' => 'div', 'class' => 'form-group']],
+                    ];
                 }
 
                 if (!isset($options['filters'])) {
-                    $options['filters'] = array('StringTrim');
+                    $options['filters'] = ['StringTrim'];
                 }
 
                 if (!isset($options['attribs']['class'])) {

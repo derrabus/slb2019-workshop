@@ -2,7 +2,6 @@
 
 class AuthController extends Zend_Controller_Action
 {
-
     public function loginAction()
     {
         if (Zend_Auth::getInstance()->hasIdentity()) {
@@ -17,14 +16,14 @@ class AuthController extends Zend_Controller_Action
                 $form->getValue('password')
             );
 
-            $auth   = Zend_Auth::getInstance();
+            $auth = Zend_Auth::getInstance();
             $result = $auth->authenticate($adapter);
 
             if ($result->isValid()) {
                 return $this->_helper->redirector('index', 'index');
             }
 
-            $this->view->error = implode("\n", array_map(array($this->view, 'translate'), $result->getMessages()));
+            $this->view->error = implode("\n", array_map([$this->view, 'translate'], $result->getMessages()));
         }
 
         $this->view->form = $form;
@@ -35,11 +34,4 @@ class AuthController extends Zend_Controller_Action
         Zend_Auth::getInstance()->clearIdentity();
         $this->_helper->redirector('login');
     }
-
-
 }
-
-
-
-
-

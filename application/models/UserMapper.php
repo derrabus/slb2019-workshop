@@ -8,6 +8,7 @@ class Application_Model_UserMapper
      * @param string|Zend_Db_Table_Abstract $dbTable
      *
      * @return $this
+     *
      * @throws Exception
      */
     public function setDbTable($dbTable)
@@ -19,6 +20,7 @@ class Application_Model_UserMapper
             throw new Exception('Invalid table data gateway provided');
         }
         $this->_dbTable = $dbTable;
+
         return $this;
     }
 
@@ -30,6 +32,7 @@ class Application_Model_UserMapper
         if (null === $this->_dbTable) {
             $this->setDbTable('Application_Model_DbTable_User');
         }
+
         return $this->_dbTable;
     }
 
@@ -60,4 +63,3 @@ class Application_Model_UserMapper
         ;
     }
 }
-

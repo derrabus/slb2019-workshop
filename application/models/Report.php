@@ -209,4 +209,3 @@ class Application_Model_Report
         return sprintf('%d-%\'.03d', $this->_year, $this->_number);
     }
 }
-

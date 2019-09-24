@@ -12,16 +12,17 @@ class TravelOrganizer_Auth_DbTableAdapter implements Zend_Auth_Adapter_Interface
     }
 
     /**
-     * Performs an authentication attempt
+     * Performs an authentication attempt.
      *
      * @throws Zend_Auth_Adapter_Exception If authentication cannot be performed
+     *
      * @return Zend_Auth_Result
      */
     public function authenticate()
     {
         $code = $this->_doAuthenticate();
 
-        return new Zend_Auth_Result($code, $this->_username, $code > Zend_Auth_Result::FAILURE ? array() : array('message.invalid_credentials'));
+        return new Zend_Auth_Result($code, $this->_username, $code > Zend_Auth_Result::FAILURE ? [] : ['message.invalid_credentials']);
     }
 
     /**
@@ -33,7 +34,7 @@ class TravelOrganizer_Auth_DbTableAdapter implements Zend_Auth_Adapter_Interface
 
         $row = $dbtable
             ->select(Zend_Db_Table_Abstract::SELECT_WITH_FROM_PART)
-            ->columns(array('username', 'password', 'password_salt'))
+            ->columns(['username', 'password', 'password_salt'])
             ->where('username = ?', $this->_username)
             ->query()
             ->fetch(PDO::FETCH_ASSOC)
@@ -43,7 +44,7 @@ class TravelOrganizer_Auth_DbTableAdapter implements Zend_Auth_Adapter_Interface
             return Zend_Auth_Result::FAILURE_IDENTITY_NOT_FOUND;
         }
 
-        if (md5($this->_password . $row['password_salt']) != $row['password']) {
+        if (md5($this->_password.$row['password_salt']) != $row['password']) {
             return Zend_Auth_Result::FAILURE_CREDENTIAL_INVALID;
         }
 

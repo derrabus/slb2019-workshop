@@ -8,6 +8,7 @@ class Application_Model_ExpenseMapper
      * @param string|Zend_Db_Table_Abstract $dbTable
      *
      * @return $this
+     *
      * @throws Exception
      */
     public function setDbTable($dbTable)
@@ -19,6 +20,7 @@ class Application_Model_ExpenseMapper
             throw new Exception('Invalid table data gateway provided');
         }
         $this->_dbTable = $dbTable;
+
         return $this;
     }
 
@@ -30,6 +32,7 @@ class Application_Model_ExpenseMapper
         if (null === $this->_dbTable) {
             $this->setDbTable('Application_Model_DbTable_Expense');
         }
+
         return $this->_dbTable;
     }
 
@@ -38,20 +41,20 @@ class Application_Model_ExpenseMapper
      */
     public function save(Application_Model_Expense $expense)
     {
-        $data = array(
+        $data = [
             'report_id' => $expense->getReportId(),
             'type' => $expense->getType(),
             'date' => $expense->getDate()->format('Y-m-d'),
             'description' => $expense->getDescription(),
             'gross' => $expense->getGrossAmount(),
-            'tax' => $expense->getTaxAmount()
-        );
+            'tax' => $expense->getTaxAmount(),
+        ];
 
         if (null === ($id = $expense->getId())) {
             unset($data['id']);
             $this->getDbTable()->insert($data);
         } else {
-            $this->getDbTable()->update($data, array('id = ?' => $id));
+            $this->getDbTable()->update($data, ['id = ?' => $id]);
         }
     }
 
@@ -76,12 +79,13 @@ class Application_Model_ExpenseMapper
     public function fetchForReport($reportId)
     {
         $resultSet = $this->getDbTable()->fetchAll(['report_id = ?' => $reportId], ['date']);
-        $entries   = array();
+        $entries = [];
         foreach ($resultSet as $row) {
             $entry = new Application_Model_Expense();
             $this->mapRowToModel($row, $entry);
             $entries[$row->type][] = $entry;
         }
+
         return $entries;
     }
 
@@ -94,12 +98,12 @@ class Application_Model_ExpenseMapper
     {
         $result = $this->getDbTable()
             ->select(Zend_Db_Table_Abstract::SELECT_WITH_FROM_PART)
-            ->columns(array(
+            ->columns([
                 'type',
                 'SUM(gross) as gross',
                 'SUM(tax) as tax',
-                'SUM(gross - tax) as net'
-            ))
+                'SUM(gross - tax) as net',
+            ])
             ->where('report_id = ?', $reportId)
             ->group('type')
             ->query(PDO::FETCH_ASSOC)
@@ -114,11 +118,11 @@ class Application_Model_ExpenseMapper
 
         $indexedResult['total'] = $this->getDbTable()
             ->select(Zend_Db_Table_Abstract::SELECT_WITH_FROM_PART)
-            ->columns(array(
+            ->columns([
                 'SUM(gross) as gross',
                 'SUM(tax) as tax',
-                'SUM(gross - tax) as net'
-            ))
+                'SUM(gross - tax) as net',
+            ])
             ->where('report_id = ?', $reportId)
             ->query()
             ->fetch(PDO::FETCH_ASSOC)
@@ -140,4 +144,3 @@ class Application_Model_ExpenseMapper
         ;
     }
 }
-
