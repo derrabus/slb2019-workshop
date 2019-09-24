@@ -4,4 +4,4 @@ global $kernel;
 
 $twig = $kernel->getContainer()->get('twig');
 
-$twig->display('dashboard.html.twig', ['username' => TravelOrganizer_Auth_UserProvider::getInstance()->getCurrentUser()->getFullName()]);
+$twig->display('dashboard.html.twig');

@@ -22,7 +22,7 @@ final class AuthController extends AbstractController
     public function loginAction(Request $request): Response
     {
         if (\Zend_Auth::getInstance()->hasIdentity()) {
-            return $this->redirect('/');
+            return $this->redirectToRoute('zend');
         }
 
         $error = null;
@@ -38,7 +38,7 @@ final class AuthController extends AbstractController
             $result = $auth->authenticate($adapter);
 
             if ($result->isValid()) {
-                return $this->redirect('/');
+                return $this->redirectToRoute('zend');
             }
 
             $error = implode("\n", array_map([$this->translate, 'translate'], $result->getMessages()));

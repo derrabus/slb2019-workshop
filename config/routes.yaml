@@ -1,3 +1,7 @@
 #index:
 #    path: /
 #    controller: App\Controller\DefaultController::index
+
+legacy_routes:
+    resource: legacy_route_provider::loadRoutes
+    type: service

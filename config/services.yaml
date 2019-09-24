@@ -11,6 +11,9 @@ services:
         autowire: true      # Automatically injects dependencies in your services.
         autoconfigure: true # Automatically registers your services as commands, event subscribers, etc.
 
+        bind:
+            string $controllerPath: '%kernel.project_dir%/application/controllers'
+
     # makes classes in src/ available to be used as services
     # this creates a service per class whose id is the fully-qualified class name
     TravelOrganizer\:
@@ -25,6 +28,10 @@ services:
 
     # add more service definitions when explicit configuration is needed
     # please note that last definitions always *replace* previous ones
+
+    legacy_route_provider:
+        alias: TravelOrganizer\Routing\RouteProvider
+        public: true
 
     Zend_Translate:
         class: Zend_Translate
