@@ -13,6 +13,7 @@
     "require": {
         "php": "^7.3.9",
         "derrabus/ereg-shim": "^1.0",
+        "sensio/framework-extra-bundle": "^5.4",
         "shardj/zf1-future": "^1.14",
         "symfony/asset": "^4.3",
         "symfony/console": "^4.3",
