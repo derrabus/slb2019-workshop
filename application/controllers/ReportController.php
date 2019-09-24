@@ -1,6 +1,6 @@
 <?php
 
-class ReportController extends Zend_Controller_Action
+final class ReportController extends Zend_Controller_Action
 {
     /** @var Application_Model_ReportMapper */
     private $_reportMapper;
@@ -118,47 +118,31 @@ class ReportController extends Zend_Controller_Action
         }
     }
 
-    /**
-     * @return Application_Model_Report
-     */
-    protected function findReport()
+    private function findReport(): Application_Model_Report
     {
         $report = new Application_Model_Report();
         if ($this->hasParam('shortcut')) {
-            if (@ereg('([0-9]{4})-([0-9]{3})', $this->getParam('shortcut'), $regs)) {
-                $this->_reportMapper->findByYearAndNumber($regs[1], $regs[2], $report);
-                if ($report->getId()) {
-                    if ($report->getOwnerId() != TravelOrganizer_Auth_UserProvider::getInstance()->getCurrentUser()->getId()) {
-                        throw new Zend_Controller_Action_Exception('Access denied', 404);
-                    }
-                } else {
-                    throw new Zend_Controller_Action_Exception('Report not found', 404);
-                }
-            } else {
-                throw new Zend_Controller_Action_Exception('Invalid Shortcut', 404);
-            }
-        } elseif ($this->hasParam('id')) {
-            $this->_reportMapper->find(intval($this->getRequest()->getParam('id')), $report);
+            return $this->loadReportByShortcut($report);
+        }
 
-            if ($report->getId()) {
-                if ($report->getOwnerId() != TravelOrganizer_Auth_UserProvider::getInstance()->getCurrentUser()->getId()) {
-                    throw new Zend_Controller_Action_Exception('Access denied', 404);
-                }
-            } else {
-                throw new Zend_Controller_Action_Exception('Report not found', 404);
-            }
-        } else {
+        if (!$this->hasParam('id')) {
             throw new Zend_Controller_Action_Exception('Missing ID', 404);
+        }
+
+        $this->_reportMapper->find((int) $this->getRequest()->getParam('id'), $report);
+
+        if (!$report->getId()) {
+            throw new Zend_Controller_Action_Exception('Report not found', 404);
+        }
+
+        if ($report->getOwnerId() != TravelOrganizer_Auth_UserProvider::getInstance()->getCurrentUser()->getId()) {
+            throw new Zend_Controller_Action_Exception('Access denied', 404);
         }
 
         return $report;
     }
 
-    /**
-     * @param Zend_Form                $form
-     * @param Application_Model_Report $report
-     */
-    protected function mapFormToModel(Zend_Form $form, Application_Model_Report $report)
+    private function mapFormToModel(Zend_Form $form, Application_Model_Report $report)
     {
         $data = $form->getValues();
         $report
@@ -169,5 +153,26 @@ class ReportController extends Zend_Controller_Action
         foreach (['number', 'occasion', 'destination', 'classification'] as $field) {
             call_user_func([$report, 'set'.ucfirst($field)], $data[$field]);
         }
+    }
+
+    /**
+     * @throws Zend_Controller_Action_Exception
+     */
+    private function loadReportByShortcut(Application_Model_Report $report): Application_Model_Report
+    {
+        if (!(@ereg('([0-9]{4})-([0-9]{3})', $this->getParam('shortcut'), $regs))) {
+            throw new Zend_Controller_Action_Exception('Invalid Shortcut', 404);
+        }
+
+        $this->_reportMapper->findByYearAndNumber($regs[1], $regs[2], $report);
+        if (!$report->getId()) {
+            throw new Zend_Controller_Action_Exception('Report not found', 404);
+        }
+
+        if ($report->getOwnerId() != TravelOrganizer_Auth_UserProvider::getInstance()->getCurrentUser()->getId()) {
+            throw new Zend_Controller_Action_Exception('Access denied', 404);
+        }
+
+        return $report;
     }
 }
