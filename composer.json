@@ -1,0 +1,33 @@
+{
+    "name": "rabus/slb2019-workshop",
+    "description": "Demo Application for SymfonyLive Berlin 2019",
+    "type": "project",
+    "license": "proprietary",
+    "authors": [
+        {
+            "name": "Alexander M. Turek",
+            "email": "me@derrabus.de"
+        }
+    ],
+    "minimum-stability": "stable",
+    "require": {
+        "php": "^5.6"
+    },
+    "config": {
+        "platform": {
+            "php": "5.6.36"
+        },
+        "sort-packages": true
+    },
+    "include-path": ["library"],
+    "autoload": {
+        "psr-0": {
+            "TravelOrganizer": "library",
+            "Zend": "library"
+        },
+        "classmap": [
+            "application",
+            "library/TCPDF/tcpdf.php"
+        ]
+    }
+}

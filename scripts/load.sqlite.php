@@ -1,7 +1,7 @@
 #!/usr/bin/env php
 <?php
 
-// scripts/load.sqlite.php
+require dirname(__DIR__).'/vendor/autoload.php';
 
 /**
  * Script for creating and loading database
@@ -9,13 +9,7 @@
 
 // Initialize the application path and autoloading
 defined('APPLICATION_PATH')
-|| define('APPLICATION_PATH', realpath(dirname(__FILE__) . '/../application'));
-set_include_path(implode(PATH_SEPARATOR, array(
-    APPLICATION_PATH . '/../library',
-    get_include_path(),
-)));
-require_once 'Zend/Loader/Autoloader.php';
-Zend_Loader_Autoloader::getInstance();
+    || define('APPLICATION_PATH', realpath(dirname(__FILE__) . '/../application'));
 
 // Define some CLI options
 $getopt = new Zend_Console_Getopt(array(

@@ -11,11 +11,6 @@ class Bootstrap extends Zend_Application_Bootstrap_Bootstrap
         });
     }
 
-    protected function _initAutoload()
-    {
-        Zend_Loader_Autoloader::getInstance()->registerNamespace('TravelOrganizer_');
-    }
-
     protected function _initTranslate()
     {
         Zend_Registry::set('Zend_Locale', new Zend_Locale('de_DE'));

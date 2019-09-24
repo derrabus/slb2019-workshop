@@ -4,8 +4,6 @@ class TravelOrganizer_Export_PdfRenderer
 {
     public function renderDocument($title, $filename, $content)
     {
-        require_once 'TCPDF/tcpdf.php';
-
         $pdf = new TCPDF(PDF_PAGE_ORIENTATION, PDF_UNIT, PDF_PAGE_FORMAT, true, 'UTF-8', false);
 
         $pdf->SetCreator(PDF_CREATOR);
